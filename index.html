@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Inventario Taller de Motos</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f9;
+        padding: 30px;
+      }
+      .container {
+        max-width: 800px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+      .form-group {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+      input {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        flex: 1;
+        min-width: 150px;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      button:hover {
+        background-color: #218838;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      th,
+      td {
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+        text-align: left;
+      }
+      th {
+        background-color: #343a40;
+        color: white;
+      }
+      .btn-delete {
+        background-color: #dc3545;
+        padding: 5px 10px;
+      }
+      .btn-delete:hover {
+        background-color: #c82333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🏍️ Inventario del Taller</h1>
+
+      <div class="form-group">
+        <input type="text" id="nombre" placeholder="Nombre repuesto" />
+        <input type="number" id="precio" placeholder="Precio ($)" />
+        <input type="number" id="stock" placeholder="Cantidad" />
+        <button onclick="agregarRepuesto()">Guardar</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Repuesto</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-body"></tbody>
+      </table>
+    </div>
+
+    <script>
+      function agregarRepuesto() {
+        const nombre = document.getElementById("nombre").value;
+        const precio = document.getElementById("precio").value;
+        const stock = document.getElementById("stock").value;
+
+        if (!nombre || !precio || !stock) {
+          alert("Por favor llena todos los campos");
+          return;
+        }
+
+        const tabla = document.getElementById("tabla-body");
+        const nuevaFila = tabla.insertRow();
+
+        nuevaFila.innerHTML = `
+            <td>${nombre}</td>
+            <td>$${Number(precio).toLocaleString()}</td>
+            <td>${stock}</td>
+            <td><button class="btn-delete" onclick="this.parentElement.parentElement.remove()">Eliminar</button></td>
+        `;
+
+        // Limpiar campos
+        document.getElementById("nombre").value = "";
+        document.getElementById("precio").value = "";
+        document.getElementById("stock").value = "";
+      }
+    </script>
+  </body>
+</html>
