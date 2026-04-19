@@ -1,4 +1,4 @@
-Gemini ha dicho
+
 Sistema de Gestión de Inventario - Taller de Motos
 Este proyecto consiste en el diseño y desarrollo de una base de datos relacional y una interfaz web para la administración de repuestos de motocicletas. El objetivo es centralizar la información de inventario, proveedores y categorías en un sistema integrado.
 
